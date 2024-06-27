@@ -1,0 +1,176 @@
+{
+  "version": "0.1.0",
+  "name": "osqotoken",
+  "instructions": [
+    {
+      "name": "mintToken",
+      "accounts": [
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "transferToken",
+      "accounts": [
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "from",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "to",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fromAuthority",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u16"
+        },
+        {
+          "name": "bondid",
+          "type": "string"
+        },
+        {
+          "name": "investorid",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "burnToken",
+      "accounts": [
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u16"
+        },
+        {
+          "name": "bondid",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "MapperAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mapperaccounts",
+            "type": {
+              "vec": {
+                "defined": "MapperInfo"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "MapperInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "investorid",
+            "type": "string"
+          },
+          {
+            "name": "bondid",
+            "type": "string"
+          },
+          {
+            "name": "fromaddress",
+            "type": "string"
+          },
+          {
+            "name": "toaddress",
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "type": "u16"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "TransferTokenEvent",
+      "fields": [
+        {
+          "name": "data",
+          "type": {
+            "defined": "MapperInfo"
+          },
+          "index": true
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "address": "EGP5WC43YMNKytYWT2U1FkwrpLwdYZ8Ms8X2kwJWAVLJ"
+  }
+}
